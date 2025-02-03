@@ -45,5 +45,32 @@ public class StringOperationsTest
         var result = strOperations.RemoveWhitespace(" Hola, esto es una prueba ");
         Assert.DoesNotContain(" ", result);
     }
-    
+
+    [Fact]
+    public void QuantintyInWordsTest()
+    {
+        // Arrange
+        var strOperations = new StringOperations();
+
+        // Act
+        var result = strOperations.QuantintyInWords("cat", 10);
+        
+        // Assert
+        Assert.StartsWith("ten", result);
+        Assert.Contains("cat", result);
+    }
+
+    [Fact]
+    public void GetStringLengthTest()
+    {
+        var strOperations = new StringOperations();
+        Assert.ThrowsAny<ArgumentNullException>(() => strOperations.GetStringLength(null));
+    }
+
+    [Fact]
+    public void TruncateStringTestShouldReturnException()
+    {
+        var strOperations = new StringOperations();
+        Assert.ThrowsAny<ArgumentOutOfRangeException>(() => strOperations.TruncateString("Hello", 0));
+    }
 }
