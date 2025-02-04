@@ -73,4 +73,14 @@ public class StringOperationsTest
         var strOperations = new StringOperations();
         Assert.ThrowsAny<ArgumentOutOfRangeException>(() => strOperations.TruncateString("Hello", 0));
     }
+
+    [Theory]
+    [InlineData("V", 5)]
+    [InlineData("III", 3)]
+    public void FromRomanToIntTest(string romanNumber, int expectedResult)
+    {
+        var strOperations = new StringOperations();
+        var result = strOperations.FromRomanToNumber(romanNumber);
+        Assert.Equal(expectedResult, result);
+    }
 }
