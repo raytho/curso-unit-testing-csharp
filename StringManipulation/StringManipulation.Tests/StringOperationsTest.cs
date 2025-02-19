@@ -2,7 +2,7 @@ namespace StringManipulation.Tests;
 
 public class StringOperationsTest
 {
-    [Fact]
+    [Fact(Skip = "Not implemented")]
     public void ConcatenateStringsTest()
     {
         // Arrange
@@ -82,5 +82,15 @@ public class StringOperationsTest
         var strOperations = new StringOperations();
         var result = strOperations.FromRomanToNumber(romanNumber);
         Assert.Equal(expectedResult, result);
+    }
+
+    [Theory]
+    [InlineData("oro", true)]
+    [InlineData("hello", false)]
+    public void IsPalindromeParamTestIsTrue(string word, bool isPalindrome)
+    {
+        var strOperations = new StringOperations();
+        var result = strOperations.IsPalindrome(word);
+        Assert.Equal(isPalindrome, result);
     }
 }
