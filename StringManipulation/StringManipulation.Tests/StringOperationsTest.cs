@@ -1,3 +1,6 @@
+using Microsoft.Extensions.Logging;
+using Moq;
+
 namespace StringManipulation.Tests;
 
 public class StringOperationsTest
@@ -92,5 +95,15 @@ public class StringOperationsTest
         var strOperations = new StringOperations();
         var result = strOperations.IsPalindrome(word);
         Assert.Equal(isPalindrome, result);
+    }
+
+    [Fact]
+    public void CountOccurrencesTest()
+    {
+        var mockLogger = new Mock<ILogger<StringOperations>>();
+        var strOperations = new StringOperations(mockLogger.Object);
+
+        var result = strOperations.CountOccurrences("Hello platzi", 'l');
+        Assert.Equal(3, result);
     }
 }
