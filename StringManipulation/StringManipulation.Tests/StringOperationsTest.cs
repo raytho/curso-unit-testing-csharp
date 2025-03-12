@@ -106,4 +106,12 @@ public class StringOperationsTest
         var result = strOperations.CountOccurrences("Hello platzi", 'l');
         Assert.Equal(3, result);
     }
+
+    [Fact]
+    public void ReadFileTest()
+    {
+        var strOperations = new StringOperations();
+        var mockFileReader = new Mock<IFileReaderConector>();
+        mockFileReader.Setup(p => p.ReadString(It.IsAny<string>())).Returns("Reading file");
+    }
 }
